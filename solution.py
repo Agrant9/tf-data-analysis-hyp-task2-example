@@ -9,6 +9,5 @@ def solution(x: np.array, y: np.array) -> bool:
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    pval = st.permutation_test((x, y), lambda x, y, axis: np.mean(x, axis=axis) - np.mean(y, axis=axis), 
-                            vectorized=True, n_resamples=1000, alternative="two-sided").pvalue
+    stat, pval = st.mannwhitneyu(x, y)
     return True if pval < 0.07 else False # Ваш ответ, True или False
